@@ -21,7 +21,7 @@ STARTUP NOMOUNT;
 ALTER DATABASE MOUNT;
 ```
 ```
-ALTER DATABASE OPENL;
+ALTER DATABASE OPEN;
 ```
 sqlplus를 빠져나와 다음 명령어를 실행하여 오라클 리스너를 실행합니다.
 ```
