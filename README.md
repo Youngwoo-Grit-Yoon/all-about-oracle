@@ -1,3 +1,3 @@
-## Oracle Master
-Oracle 관련 지식 기록용 프로젝트  
-궁극적으로 오라클 마스터가 되기 위한 여정의 일부
+## The King of Oracle
+### Description
+오라클 DB 사용법 및 SQL 튜닝 관련 내용을 포함한다.
