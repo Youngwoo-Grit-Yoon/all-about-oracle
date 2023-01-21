@@ -39,3 +39,46 @@ oracle-database-ee-19c-1.0-1.x86_64.rpm를 설치한다.
 ```shell
 yum install -y oracle-database-ee-19c-1.0-1.x86_64.rpm
 ```
+#### 5. oracle-database-preinstall-19c.conf 파일 확인
+```shell
+cat /etc/security/limits.d/oracle-database-preinstall-19c.conf
+```
+```text
+# oracle-database-preinstall-19c setting for nofile soft limit is 1024
+oracle   soft   nofile    1024
+
+# oracle-database-preinstall-19c setting for nofile hard limit is 65536
+oracle   hard   nofile    65536
+
+# oracle-database-preinstall-19c setting for nproc soft limit is 16384
+# refer orabug15971421 for more info.
+oracle   soft   nproc    16384
+
+# oracle-database-preinstall-19c setting for nproc hard limit is 16384
+oracle   hard   nproc    16384
+
+# oracle-database-preinstall-19c setting for stack soft limit is 10240KB
+oracle   soft   stack    10240
+
+# oracle-database-preinstall-19c setting for stack hard limit is 32768KB
+oracle   hard   stack    32768
+
+# oracle-database-preinstall-19c setting for memlock hard limit is maximum of 128GB on x86_64 or 3GB on x86 OR 90 % of RAM
+oracle   hard   memlock    134217728
+
+# oracle-database-preinstall-19c setting for memlock soft limit is maximum of 128GB on x86_64 or 3GB on x86 OR 90% of RAM
+oracle   soft   memlock    134217728
+```
+#### 6. oracle 계정 생성
+하기 명령어를 순서대로 실행하여 그룹 및 계정을 생성한다.
+```shell
+groupadd dba
+```
+```shell
+useradd -g dba -G dba oracle
+```
+oracle 계정의 패스워드를 설정한다.
+```shell
+passwd oracle
+```
+#### 7. 오라클 DB 생성 및 구성
