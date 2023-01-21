@@ -25,3 +25,17 @@ yum -y install glibc glibc-common glibc-devel glibc-headers gcc gcc-c++ libaio-d
 ```shell
 yum -y install libaio libgcc libstdc++ libstdc++ make sysstat unixODBC unixODBC-devel
 ```
+### 4. 오라클 DB 설치
+/usr/local/setting 디렉토리로 이동 후 하기 명령어를 실행하여 oracle-database-preinstall-19c-1.0-1.el7.x86_64.rpm
+파일을 다운로드 한다.
+```shell
+curl -o oracle-database-preinstall-19c-1.0-1.el7.x86_64.rpm https://yum.oracle.com/repo/OracleLinux/OL7/latest/x86_64/getPackage/oracle-database-preinstall-19c-1.0-1.el7.x86_64.rpm
+```
+oracle-database-preinstall-19c-1.0-1.el7.x86_64.rpm를 설치한다.
+```shell
+yum install -y oracle-database-preinstall-19c-1.0-1.el7.x86_64.rpm
+```
+oracle-database-ee-19c-1.0-1.x86_64.rpm를 설치한다.
+```shell
+yum install -y oracle-database-ee-19c-1.0-1.x86_64.rpm
+```
