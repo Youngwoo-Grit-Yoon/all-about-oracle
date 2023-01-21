@@ -82,3 +82,6 @@ oracle 계정의 패스워드를 설정한다.
 passwd oracle
 ```
 #### 7. 오라클 DB 생성 및 구성
+```shell
+/etc/init.d/oracledb_ORCLCDB-19c configure
+```
