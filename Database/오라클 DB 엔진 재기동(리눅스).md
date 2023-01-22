@@ -1,4 +1,4 @@
-## 오라클 DB 재기동
+## 오라클 DB 재기동(리눅스)
 오라클 엔진이 설치되어 있는 VM 리눅스로 접속하여 oracle 계정으로 로그인을 수행한다.
 ```text
 [root@localhost ~]# su -l oracle
