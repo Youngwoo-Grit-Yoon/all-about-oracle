@@ -31,4 +31,3 @@ if __name__ == "__main__":
     )
     oracle_connector.connect()
     print("[INFO] Oracle DB와 연결되었습니다.")
-    
