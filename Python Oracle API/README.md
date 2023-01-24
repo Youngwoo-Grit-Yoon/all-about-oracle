@@ -16,3 +16,21 @@ conda create --name "Python Oracle API" python=3.8
 ```text
 conda activate "Python Oracle API"
 ```
+### Install python-oracledb
+Python Oracle API 콘다 가상 환경에 진입한 후 하기 명령어를 실행하여 python-oracledb 라이브러리를 설치한다.
+```text
+pip install oracledb
+```
+```text
+(Python Oracle API) C:\Users\YYW>pip show oracledb
+Name: oracledb
+Version: 1.2.2  --> 버전 확인
+Summary: Python interface to Oracle Database
+Home-page: https://oracle.github.io/python-oracledb
+Author: Anthony Tuininga
+Author-email: anthony.tuininga@oracle.com
+License: Apache and/or UPL
+Location: c:\users\yyw\anaconda2\envs\python oracle api\lib\site-packages
+Requires: cryptography
+Required-by:
+```
