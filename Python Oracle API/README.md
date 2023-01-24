@@ -1,6 +1,6 @@
 ## Python Oracle API
 Python Oracle API를 이용하여 Oracle DB에 연결 및 User Call을 호출한다. 쿼리 결과 및 수행 시간을 확인할 수 있다. 실행할
-쿼리문은 `main.sql` 파일에 작성한다.
+쿼리문은 `main.py`가 위치한 경로에 `main.sql`을 생성하여 해당 파일에 작성한다.
 ### Anaconda
 하기 명령어를 실행하면 Anaconda 가상 환경 목록을 확인할 수 있다.
 ```text
