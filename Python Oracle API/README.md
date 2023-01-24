@@ -35,3 +35,8 @@ Location: c:\users\yyw\anaconda2\envs\python oracle api\lib\site-packages
 Requires: cryptography
 Required-by:
 ```
+### After writing the files to be excluded into the .gitignore file
+.gitignore 파일에 제외할 파일을 작성하였으면 하기 명령어를 실행한 후 commit, push를 수행한다.
+```text
+git rm --cached {제외할 파일 이름}
+```
