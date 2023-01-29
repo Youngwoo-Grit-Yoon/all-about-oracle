@@ -7,3 +7,7 @@ oracle 계정으로 접속 후 ~/.bash_profile의 마지막에 하기 내용을 
 ```text
 alias sqlplus='rlwrap sqlplus'
 ```
+이후 재로그인 또는 하기 명령어를 실행하여 바로 반영한다.
+```shell
+sh ~/.bash_profile
+```
