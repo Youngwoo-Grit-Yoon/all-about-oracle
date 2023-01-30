@@ -46,8 +46,8 @@ count    = number of times OCI procedure was executed
 cpu      = cpu time in seconds executing
 elapsed  = elapsed time in seconds executing
 disk     = number of physical reads of buffers from disk
-query    = number of buffers gotten for consistent read
-current  = number of buffers gotten in current mode (usually for update)
+query    = number of buffers gotten for consistent read --> Consistent 모드로 읽은 블록 수
+current  = number of buffers gotten in current mode (usually for update) --> Current 모드로 읽은 블록 수
 rows     = number of rows processed by the fetch or execute call
 ********************************************************************************
 SQL ID: 8am3c6wqp3upw Plan Hash: 2949544139
