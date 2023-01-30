@@ -33,3 +33,15 @@ VALUE
 -----------------------------------------------------------------
 /opt/oracle/diag/rdbms/orclcdb/ORCLCDB/trace/ORCLCDB_ora_8272.trc
 ```
+### 리포트 생성
+tkprof 유틸리티를 사용하면 트레이스 파일을 보기 쉽게 포맷팅한 리포트를 생성해 준다.
+```shell
+tkprof ORCLCDB_ora_8272.trc report.txt sys=no
+```
+tkprof를 통해 생성된 report.txt 파일을 vi 에디터나 윈도우 노트패드로 열어서 결과를 확인하면 된다.  
+/opt/oracle/diag/rdbms/orclcdb/ORCLCDB/trace 경로로 빠르게 이동하기 위해서 oracle 계정 홈 디렉토리의 .bash_profile
+하단에 하기 내용을 기입한다.
+```text
+... 생략 ...
+alias gototrace="cd /opt/oracle/diag/rdbms/orclcdb/ORCLCDB/trace"
+```
