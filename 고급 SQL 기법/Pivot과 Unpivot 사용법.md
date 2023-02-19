@@ -129,3 +129,13 @@ unpivot ((medal_count, sport_count) FOR medal_color IN (
 SELECT * FROM OLYMPIC_MEDAL_TABLES omt ;
 ```
 ![[Pasted image 20230219213137.png]]  
+```
+SELECT *
+FROM OLYMPIC_MEDAL_TABLES
+unpivot ((medal_count, athletes) FOR medal_color IN (
+(gold_medals, gold_athletes) AS 'gold',
+(silver_medals, silver_athletes) AS 'silver',
+(bronze_medals, bronze_athletes) AS 'bronze'
+));
+```
+![[Pasted image 20230219214341.png]]  
