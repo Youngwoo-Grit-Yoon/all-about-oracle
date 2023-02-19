@@ -4,16 +4,16 @@
     "type": "split",
     "children": [
       {
-        "id": "22a82f4687108428",
+        "id": "4b4f89cdb3027f1b",
         "type": "tabs",
         "children": [
           {
-            "id": "e7c42a00231e25d8",
+            "id": "ba45f9b9296d5698",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "고급 SQL 기법/Pivot과 Unpivot 사용법.md",
+                "file": "고급 SQL 기법/Window Functions.md",
                 "mode": "source",
                 "source": false
               }
@@ -69,8 +69,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "right": {
     "id": "eb2f2eafc7cf47fe",
@@ -86,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "고급 SQL 기법/Pivot과 Unpivot 사용법.md",
+                "file": "고급 SQL 기법/Window Functions.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -103,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "고급 SQL 기법/Pivot과 Unpivot 사용법.md",
+                "file": "고급 SQL 기법/Window Functions.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -126,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "고급 SQL 기법/Pivot과 Unpivot 사용법.md"
+                "file": "고급 SQL 기법/Window Functions.md"
               }
             }
           }
@@ -147,17 +146,17 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "448ab37c214d77f5",
+  "active": "ba45f9b9296d5698",
   "lastOpenFiles": [
     "고급 SQL 기법/Pivot과 Unpivot 사용법.md",
+    "고급 SQL 기법/Window Functions.md",
+    "img/Pasted image 20230219215256.png",
+    "img/Pasted image 20230219215701.png",
+    "img/Pasted image 20230219201930.png",
     "SQL Tuning/2개 테이블 초 단위 동기화.md",
     "SQL Tuning/삼성증권 일별 통계 집계 쿼리.md",
     "Tuning Report/삼성증권 일별 통계 집계 쿼리 튜닝 보고서.md",
     "Java Oracle API/README.md",
-    "Oracle SQL 분석 도구/DBMS_XPLAN 패키지.md",
-    "Oracle SQL 분석 도구/SQL 트레이스.md",
-    "Oracle SQL 분석 도구/Auto Trace.md",
-    "Oracle SQL 분석 도구/실행계획 확인.md",
-    "README.md"
+    "Oracle SQL 분석 도구/DBMS_XPLAN 패키지.md"
   ]
 }

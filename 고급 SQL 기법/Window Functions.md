@@ -1,0 +1,22 @@
+```
+SELECT * FROM WATER w ;
+```
+![[Pasted image 20230219215006.png]]  
+```
+SELECT NAME, TYPE, SQUARE_KM,
+SUM(SQUARE_KM) OVER (ORDER BY SQUARE_KM RANGE BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW)
+FROM WATER w ;
+```
+![[Pasted image 20230219215256.png]]  
+하기 쿼리르 실행하면 위 결과와 동일하다.
+```
+SELECT NAME, TYPE, SQUARE_KM,
+SUM(SQUARE_KM) OVER (ORDER BY SQUARE_KM)
+FROM WATER w ;
+```
+만약 type 그룹별로 name을 기준으로 sum을 하고 싶다면 하기와 같이 한다.
+```
+SELECT TYPE, name, square_km, sum(SQUARE_KM) OVER (PARTITION BY TYPE ORDER BY name RANGE BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW)
+FROM WATER w ;
+```
+![[Pasted image 20230219215701.png]]  
