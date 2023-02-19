@@ -8,11 +8,15 @@
         "type": "tabs",
         "children": [
           {
-            "id": "a79b5e814d3626c9",
+            "id": "4d919bf8cf5413c9",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {}
+              "type": "markdown",
+              "state": {
+                "file": "고급 SQL 기법/Pivot과 Unpivot 사용법.md",
+                "mode": "source",
+                "source": false
+              }
             }
           }
         ]
@@ -65,7 +69,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 300,
+    "collapsed": true
   },
   "right": {
     "id": "eb2f2eafc7cf47fe",
@@ -81,6 +86,7 @@
             "state": {
               "type": "backlink",
               "state": {
+                "file": "고급 SQL 기법/Pivot과 Unpivot 사용법.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -97,6 +103,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
+                "file": "고급 SQL 기법/Pivot과 Unpivot 사용법.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -118,7 +125,9 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {}
+              "state": {
+                "file": "고급 SQL 기법/Pivot과 Unpivot 사용법.md"
+              }
             }
           }
         ]
@@ -138,8 +147,17 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "a79b5e814d3626c9",
+  "active": "4d919bf8cf5413c9",
   "lastOpenFiles": [
-    "SQL Examples/Pivot과 Unpivot 예시.md"
+    "SQL Tuning/2개 테이블 초 단위 동기화.md",
+    "고급 SQL 기법/Pivot과 Unpivot 사용법.md",
+    "SQL Tuning/삼성증권 일별 통계 집계 쿼리.md",
+    "Tuning Report/삼성증권 일별 통계 집계 쿼리 튜닝 보고서.md",
+    "Java Oracle API/README.md",
+    "Oracle SQL 분석 도구/DBMS_XPLAN 패키지.md",
+    "Oracle SQL 분석 도구/SQL 트레이스.md",
+    "Oracle SQL 분석 도구/Auto Trace.md",
+    "Oracle SQL 분석 도구/실행계획 확인.md",
+    "README.md"
   ]
 }
