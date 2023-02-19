@@ -69,7 +69,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 300,
+    "collapsed": true
   },
   "right": {
     "id": "eb2f2eafc7cf47fe",
@@ -146,7 +147,7 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "448ab37c214d77f5",
+  "active": "4d919bf8cf5413c9",
   "lastOpenFiles": [
     "SQL Tuning/2개 테이블 초 단위 동기화.md",
     "고급 SQL 기법/Pivot과 Unpivot 사용법.md",
