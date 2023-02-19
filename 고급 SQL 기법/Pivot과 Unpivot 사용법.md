@@ -93,3 +93,39 @@ GROUP BY noc
 FETCH FIRST 10 ROWS ONLY;
 ```
 ![[Pasted image 20230219211450.png]]  
+# Unpivot
+Unpivot은 열 데이터를 행으로 바꿔준다.
+```
+SELECT * FROM OLYMPIC_MEDAL_TABLES omt ;
+```
+![[Pasted image 20230219211734.png]]  
+```
+SELECT *
+FROM OLYMPIC_MEDAL_TABLES omt
+unpivot (medal_count FOR medal_color IN (
+gold_medals AS 'gold',
+silver_medals AS 'silver',
+bronze_medals AS 'bronze'
+))
+ORDER BY noc;
+```
+![[Pasted image 20230219212202.png]]  
+```
+SELECT *
+FROM OLYMPIC_MEDAL_TABLES omt ;
+```
+![[Pasted image 20230219212429.png]]  
+```
+SELECT *
+FROM OLYMPIC_MEDAL_TABLES
+unpivot ((medal_count, sport_count) FOR medal_color IN (
+(gold_medals, gold_sports) AS 'GOLD',
+(silver_medals, silver_sports) AS 'SILVER',
+(bronze_medals, bronze_sports) AS 'BRONZE'
+));
+```
+![[Pasted image 20230219212854.png]]  
+```
+SELECT * FROM OLYMPIC_MEDAL_TABLES omt ;
+```
+![[Pasted image 20230219213137.png]]  
