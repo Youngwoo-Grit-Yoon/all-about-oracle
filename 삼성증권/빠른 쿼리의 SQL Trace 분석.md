@@ -5,8 +5,8 @@ MS SQL이 생성한 Graphical SQL Plan의 맨 우측부터 분석을 시작하�
 조인 결과에 따른 Row 수를 기입하였습니다. 추측한 SQL문은 Oracle Syntax로 작성하여 힌트를 통해 Graphical SQL Plan에서 보여주는 조인 방법 및
 순서를 강제로 지정하였습니다.
 
-실제로 작성된 SQL문과의 비교를 통해 Oracle Syntax에서 MS SQL Syntax로 마이그레이션 하는 방법 서치, 통계 정보를 이용한 옵티마이저의 유동적인 SQL Plan 생성과
-튜너의 힌트 지정을 통한 SQL Plan 생성 중 어떤 것이 더 효율적인가에 대한 고민은 주인선 선임님의 몫으로 남겨두었습니다.
+실제로 작성된 SQL문과의 비교를 통해 Oracle Syntax에서 MS SQL Syntax로 마이그레이션 하는 방법 서치, 통계 정보를 이용한 옵티마이저의 동적인 SQL Plan 생성과
+튜너의 힌트 지정을 통한 정적인 SQL Plan 생성 중 어떤 것이 더 효율적인가에 대한 고민은 주인선 선임님의 몫으로 남겨두었습니다.
 ## Graphical SQL Plan
 ![img_8.png](img_8.png)
 ## SQL and Plan
