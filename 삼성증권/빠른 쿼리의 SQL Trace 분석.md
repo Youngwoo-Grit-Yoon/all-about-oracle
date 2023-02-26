@@ -675,5 +675,10 @@ OPTION (FORCE ORDER, LOOP JOIN)
 ```
 ### FROM 절에 테이블을 나열한 순으로 조인하되 조인 방식이 테이블마다 다를 때
 ```mysql-sql
-
+SELECT o.주문번호, o.고객번호, c.고객명, c.전화번호, o.주문금액, t.결제방식명
+FROM 주문 o 
+     INNER LOOP JOIN 고객 c ON (c.고객번호 = o.고객번호)
+     INNER HASH JOIN 결제방식 t ON (t.결제방식코드 = o.결제방식코드)
+WHERE o.주문일자 >= TRUNC(SYSDATE)
+OPTION (FORCE ORDER)
 ```
