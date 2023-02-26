@@ -5,6 +5,7 @@ MS SQL이 생성한 Graphical SQL Plan의 맨 우측부터 분석을 시작하�
 ## Graphical SQL Plan
 ![img_8.png](img_8.png)
 ## Text SQL Plan(마지막이 최종)
+자식 노드 간에는 위에서 아래로, 부모-자식 노드 간에는 안쪽에서 바깥쪽으로 진행합니다.
 ```text
 NESTED LOOP --> 109행
     TABLE FULL SCAN(XST_SKILL_MST) --> 109행
@@ -621,3 +622,4 @@ HASH GROUP BY
                     INDEX RANGE SCAN(IDX_RES_KEY_TYPE_CODE) --> 9행
         INDEX RANGE SCAN(PK_INTERACTION_FACT_CRYP) --> 163행
 ```
+## 최종 Text SQL Trace 분석
