@@ -61,3 +61,23 @@ NESTED LOOP --> 168행
             TABLE FULL SCAN(TXS_ST_VQ_SKILL_FIX) --> 58행
 ```
 ***
+```text
+MERGE JOIN --> 168행
+    INDEX RANGE SCAN(IDX_RES_KEY_TYPE_CODE) --> 2292행
+    NESTED LOOP --> 168행
+        SORT AGGREGATE --> 1행
+            COUNT(STOP KEY) --> 1행
+                NESTED LOOP --> 2행
+                    INDEX RANGE SCAN(IDX_DT_CAL_DATE) --> 2행
+                    TABLE ACCESS BY USER ROWID(DATE_TIME) --> 2행
+        SORT ORDER BY --> 168행
+            UNION-ALL --> 168행
+                HASH JOIN --> 110행
+                    NESTED LOOP --> 109행
+                        TABLE FULL SCAN(XST_SKILL_MST) --> 109행
+                        INDEX RANGE SCAN(PK_XST_SKILL_CODE_MST) --> 109행
+                    TABLE ACCESS BY INDEX ROWID --> 110행
+                        INDEX RANGE SCAN(PK_XST_QUEUE_REL) --> 228행
+                TABLE FULL SCAN(TXS_ST_VQ_SKILL_FIX) --> 58행
+```
+***
