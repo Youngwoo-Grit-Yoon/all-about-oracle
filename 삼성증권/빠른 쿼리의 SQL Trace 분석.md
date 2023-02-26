@@ -4,7 +4,7 @@ MS SQL이 생성한 Graphical SQL Plan의 맨 우측부터 분석을 시작하�
 화살표 우측에는 테이블 탐색 결과, 인덱스 탐색 결과, 조인 결과에 따른 Row 수를 기입하였습니다.
 ## Graphical SQL Plan
 ![img_8.png](img_8.png)
-## Text SQL Plan
+## Text SQL Plan(마지막이 최종)
 ```text
 NESTED LOOP --> 109행
     TABLE FULL SCAN(XST_SKILL_MST) --> 109행
