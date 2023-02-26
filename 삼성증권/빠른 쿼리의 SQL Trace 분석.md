@@ -664,3 +664,16 @@ HASH JOIN --> 62846행
 테이블에 RESOURCE_KEY 컬럼에 대한 단일 컬럼 인덱스를 생성하고 NL 조인을 수행한다면 MEDIATION_SEGMENT_FACT 테이블로의 Random Access가
 168번에 불과하므로 조인되는 데이터 중 결과 집합에서 누락되는 데이터가 없기에 훨씬 효율적이라고 볼 수 있습니다. 또한 만약에 MEDIATION_SEGMENT_FACT 테이블이
 시간이 지남에 따라 데이터가 증가하는 테이블이라면 RESOURCE_KEY 컬럼에 단일 컬럼 인덱스가 있기 때문에 쿼리 소요 시간이 증가하지 않습니다.
+## MS SQL Hint 사용 예시
+### FROM 절에 테이블을 나열한 순으로 NL 조인
+```mysql-sql
+SELECT o.주문번호, o.고객번호, c.고객명, c.전화번호, o.주문금액
+FROM 주문 o, 고객 c
+WHERE o.주문일자 >= TRUNC(SYSDATE)
+AND c.고객번호 = o.고객번호
+OPTION (FORCE ORDER, LOOP JOIN)
+```
+### FROM 절에 테이블을 나열한 순으로 조인하되 조인 방식이 테이블마다 다를 때
+```mysql-sql
+
+```
