@@ -636,7 +636,9 @@ SORT AGGREGATE --> 1행
 ```
 불필요한 연산처럼 보이지만 일전에 삼성증권에 방문하였을 때 Dynamic SQL문으로 쓰이는 것을 보고 상기와 같은 쓰임새를 납득하였습니다.
 
-(2) 유일하게 부하 지점으로 보이는 부분은 MEDIATION_SEGMENT_FACT 테이블을 FULL SCAN 하는 부분입니다.
+(2) 유일하게 부하 지점으로 보이는 부분은 MEDIATION_SEGMENT_FACT 테이블을 FULL SCAN 하는 부분입니다. 일전에 삼성증권에서 해당 쿼리가
+1분 40초나 걸리게 했던 부분이 MS SQL 옵티마이저가 생성한 SQL Plan에서도 전체 쿼리 소요 시간 중 많은 부분을 차지하고 있었습니다! 느린 쿼리와의
+차이점은 하기에서 볼 수 있듯이 NESTED LOOP 조인이 아닌 HASH JOIN이라는 점입니다.
 ```text
 HASH JOIN --> 62846행
     MERGE JOIN --> 168행
@@ -658,12 +660,13 @@ HASH JOIN --> 62846행
                     TABLE FULL SCAN(TXS_ST_VQ_SKILL_FIX) --> 58행
     TABLE FULL SCAN(MEDIATION_SEGMENT_FACT) --> 1479372행
 ```
-전체 쿼리 수행 시간 0.494초 중에서 해당 HASH JOIN이 0.441초를 차지합니다. MEDIATION_SEGMENT_FACT 테이블의 RESOURCE_KEY 컬럼에
-인덱스가 없어서 168행의 RESOURCE_KEY 컬럼을 기준으로 해시 테이블을 만들고 1479372번 해시 테이블 탐색을 수행하여 62846행을 결과로
-내놓았습니다. `1479372번 탐색하여 62846행만 결과로 내놓은 것은 전체 4.25%에 불과`하므로 굉장히 비효율적입니다. 따라서 MEDIATION_SEGMENT_FACT
-테이블에 RESOURCE_KEY 컬럼에 대한 단일 컬럼 인덱스를 생성하고 NL 조인을 수행한다면 MEDIATION_SEGMENT_FACT 테이블로의 Random Access가
-168번에 불과하므로 조인되는 데이터 중 결과 집합에서 누락되는 데이터가 없기에 훨씬 효율적이라고 볼 수 있습니다. 또한 만약에 MEDIATION_SEGMENT_FACT 테이블이
-시간이 지남에 따라 데이터가 증가하는 테이블이라면 RESOURCE_KEY 컬럼에 단일 컬럼 인덱스가 있기 때문에 쿼리 소요 시간이 증가하지 않습니다.
+전체 쿼리 수행 시간 0.494초 중에서 해당 HASH JOIN이 0.441초를 차지합니다. 전체 쿼리 소요 시간 중 89%입니다. MEDIATION_SEGMENT_FACT
+테이블의 RESOURCE_KEY 컬럼에 인덱스가 없어서 168행의 RESOURCE_KEY 컬럼을 기준으로 해시 테이블을 만들고 1479372번 해시 테이블 탐색을
+수행하여 62846행을 결과로 내놓았습니다. `1479372번 탐색하여 62846행만 결과로 내놓은 것은 전체 4.25%에 불과`하므로 굉장히 비효율적입니다.
+따라서 MEDIATION_SEGMENT_FACT 테이블에 RESOURCE_KEY 컬럼에 대한 단일 컬럼 인덱스를 생성하고 NL 조인을 수행한다면 MEDIATION_SEGMENT_FACT
+테이블로의 Random Access가 168번에 불과하므로 조인되는 데이터 중 결과 집합에서 누락되는 데이터가 없기에 훨씬 효율적이라고 볼 수 있습니다.
+또한 만약에 MEDIATION_SEGMENT_FACT 테이블이 시간이 지남에 따라 데이터가 증가하는 테이블이라면 RESOURCE_KEY 컬럼에 단일 컬럼 인덱스가
+있기 때문에 쿼리 소요 시간이 증가하지 않습니다.
 ## MS SQL Hint 사용 예시
 ### FROM 절에 테이블을 나열한 순으로 NL 조인
 ```mysql-sql
