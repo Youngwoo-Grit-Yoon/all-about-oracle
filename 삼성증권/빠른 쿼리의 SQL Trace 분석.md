@@ -326,7 +326,7 @@ HASH JOIN --> 2771행
 ```
 ***
 ```text
-HASH JOIN --> 2771행
+HASH JOIN(OUTER) --> 2771행
     INDEX RANGE SCAN(PK_AGR_SCFG_MAP_I) --> 1행
     HASH JOIN --> 2771행
         INDEX RANGE SCAN(PK_AGR_SCFG_SCHEDULE) --> 17행
@@ -369,7 +369,7 @@ HASH JOIN --> 2771행
 ***
 ```text
 NESTED LOOP(OUTER) --> 2771행
-    HASH JOIN --> 2771행
+    HASH JOIN(OUTER) --> 2771행
         INDEX RANGE SCAN(PK_AGR_SCFG_MAP_I) --> 1행
         HASH JOIN --> 2771행
             INDEX RANGE SCAN(PK_AGR_SCFG_SCHEDULE) --> 17행
@@ -415,7 +415,7 @@ NESTED LOOP(OUTER) --> 2771행
 ```text
 FILTER OPERATION --> 163행
     NESTED LOOP(OUTER) --> 2771행
-        HASH JOIN --> 2771행
+        HASH JOIN(OUTER) --> 2771행
             INDEX RANGE SCAN(PK_AGR_SCFG_MAP_I) --> 1행
             HASH JOIN --> 2771행
                 INDEX RANGE SCAN(PK_AGR_SCFG_SCHEDULE) --> 17행
@@ -462,7 +462,7 @@ FILTER OPERATION --> 163행
 NESTED LOOP(OUTER) --> 163행
     FILTER OPERATION --> 163행
         NESTED LOOP(OUTER) --> 2771행
-            HASH JOIN --> 2771행
+            HASH JOIN(OUTER) --> 2771행
                 INDEX RANGE SCAN(PK_AGR_SCFG_MAP_I) --> 1행
                 HASH JOIN --> 2771행
                     INDEX RANGE SCAN(PK_AGR_SCFG_SCHEDULE) --> 17행
@@ -516,7 +516,7 @@ NESTED LOOP(OUTER) --> 163행
     NESTED LOOP(OUTER) --> 163행
         FILTER OPERATION --> 163행
             NESTED LOOP(OUTER) --> 2771행
-                HASH JOIN --> 2771행
+                HASH JOIN(OUTER) --> 2771행
                     INDEX RANGE SCAN(PK_AGR_SCFG_MAP_I) --> 1행
                     HASH JOIN --> 2771행
                         INDEX RANGE SCAN(PK_AGR_SCFG_SCHEDULE) --> 17행
@@ -572,7 +572,7 @@ HASH GROUP BY
         NESTED LOOP(OUTER) --> 163행
             FILTER OPERATION --> 163행
                 NESTED LOOP(OUTER) --> 2771행
-                    HASH JOIN --> 2771행
+                    HASH JOIN(OUTER) --> 2771행
                         INDEX RANGE SCAN(PK_AGR_SCFG_MAP_I) --> 1행
                         HASH JOIN --> 2771행
                             INDEX RANGE SCAN(PK_AGR_SCFG_SCHEDULE) --> 17행
