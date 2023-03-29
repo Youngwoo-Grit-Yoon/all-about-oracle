@@ -9,6 +9,7 @@
 
 ![img.png](img.png)
 
+## 데이터 보정 쿼리
 ```oracle-sql
 SELECT
     AQD.DATE_TIME_KEY,
@@ -119,3 +120,24 @@ GROUP BY
     AQD.USER_DATA_KEY1
 ```
 추후 `:작업일`을 실제 작업일로 교체
+
+## 중복 데이터 검증 쿼리
+```oracle-sql
+SELECT COUNT(*)
+FROM(SELECT COUNT(*) AS CNT
+     FROM AGT_QUEUE_DAY AQD
+     WHERE AQD.DATE_TIME_KEY >= dbo.F_D2U(20230228)
+     AND AQD.DATE_TIME_KEY < dbo.F_D2U(:작업일)
+     GROUP BY 
+         AQD.DATE_TIME_KEY,
+         AQD.GROUP_COMBINATION_KEY,
+         AQD.RESOURCE_KEY,
+         AQD.INTERACTION_DESCRIPTOR_KEY,
+         AQD.TENANT_KEY,
+         AQD.WORKBIN_KEY,
+         AQD.MEDIA_TYPE_KEY,
+         AQD.INTERACTION_TYPE_KEY,
+         AQD.USER_DATA_KEY1) AQDCNT
+WHERE AQDCNT.CNT >= 2
+```
+만약 결과 값이 0이 아닌 1 이상이라면 -2 값의 USER_DATA_KEY1 컬럼에 대한 다수의 USER_DATA_KEY2 컬럼 값이 존재함을 반증한다.
