@@ -1,4 +1,4 @@
-## 계정 생성 및 테이블 스페이스 부여
+## 계정 생성 및 테이블 스페이스 부여(CentOS 7.9)
 하기와 같이 계정을 생성한다. 12c 이상 버전부터는 생성할 계정 이름 앞에 c##을 붙인다.
 ```oracle-sql
 SQL> create user c##youngwoo identified by password;

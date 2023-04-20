@@ -1,4 +1,4 @@
-## 오라클 DB 제거(리눅스)
+## 오라클 DB 제거(CentOS 7.9)
 #### 1. Run the deinstall script in the $ORACLE_HOME/deinstall folder.
 ```text
 [oracle@vm ~]$ cd $ORACLE_HOME/deinstall/
