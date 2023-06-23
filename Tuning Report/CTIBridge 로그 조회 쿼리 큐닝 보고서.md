@@ -43,5 +43,40 @@ isac_skeleton.mn_server_resource_tbl 테이블을 isac_skeleton.cm_std_cd 테이
 하기 순서와 같이 인덱스를 생성한다.
 - `mn_server_resource_tbl_server_id_idx` : server_id + load_dttm
 ```postgres-sql
-
+SELECT t2.server_resource_sq_id,
+       t2.server_id,
+       t3.etc_2_ctnt AS center_nm,
+       t3.cd_id AS server_nm,
+       t3.cd_nm AS host_nm,
+       t2.cpu_usage,
+       t2.mem_usage,
+       t2.load_dttm
+FROM (SELECT DISTINCT ON (t1.server_id) 
+                          t1.server_resource_sq_id,
+                          t1.server_id,
+                          t1.cpu_usage,
+                          t1.mem_usage,
+                          t1.load_dttm
+      FROM isac_skeleton.mn_server_resource_tbl t1
+      ORDER BY t1.server_id, t1.load_dttm DESC) t2, isac_skeleton.cm_std_cd t3
+WHERE t3.cd_type_id::text = 'CM101'::text 
+AND t3.etc_1_ctnt::text = t2.server_id::text
+ORDER BY t2.server_id, t2.load_dttm DESC
 ```
+## 튜닝 후 SQL 실행 계획
+![img_2.png](img_2.png)
+- 튜닝 후 전체 비용 : `18.08`
+- 튜닝 후 읽은 버퍼 블록 수 : `5`개
+- 튜닝 후 예상 소요 시간 : `0.638`
+- 튜닝 후 예상 로우 수 : `4`건
+
+확실히 튜닝 이후에는 튜닝 전과 비교해 엄청난 성능 차이를 보여준다. 하지만 실행 계획을 살펴보면 기대한 Nested Loop 조인이 아닌 Merge Join을
+수행한다. 또한, 앞서 만들어준 인덱스를 사용하는 것이 아닌 Full Scan(=Seq Scan)을 사용했다. 그 이유는 무엇일까?  
+1. `NL 조인이 아닌 Merge Join을 수행한 이유` : 옵티마이저는 데이터 수와 같은 통계 데이터를 이용하여 실행 계획을 생성한다. 하지만 현재 각 테이블에는
+테스트 용으로 삽입한 소수의 데이터들이 전부일 뿐이다. 따라서 올바른 데이터가 옵티마이저에게 제공되지 않았기 때문에 다소 부정확한 실행 계획이
+생성된 것이다.
+2. `Index가 아닌 Full Scan을 수행한 이유` : 앞서 말했듯이 데이터는 백 몇 건의 데이터밖에 존재하지 않는다. 보통 데이터베이스 블록 하나에는
+몇 천 건의 로우가 한꺼번에 저장될 수 있다. 그렇다면 인덱스를 사용하든 Full Scan을 사용하든 어차피 테이블 블록 하나를 읽는 것은 동일하다.
+따라서 옵티마이저가 Index 스캔 대신에 Full Scan을 선택한 것이다.
+## 튜닝 후 SQL 실행 결과
+![img_3.png](img_3.png)
