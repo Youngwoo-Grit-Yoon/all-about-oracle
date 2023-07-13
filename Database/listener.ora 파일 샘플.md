@@ -21,3 +21,4 @@ LISTENER =
 
 ADR_BASE_LISTENER = /opt/oracle
 ```
+원격에서 접속이 가능하도록 하기 위해서는 listener.ora 파일 및 tnsnames.ora 파일의 localhost를 0.0.0.0으로 바꾼다.
