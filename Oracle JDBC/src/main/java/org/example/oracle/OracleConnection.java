@@ -42,8 +42,15 @@ public class OracleConnection {
 
     public void executeSQL(String sql) throws SQLException {
         Connection conn = this.pooledConnection.getConnection();
-        PreparedStatement preparedStatement = conn.prepareStatement(sql);
-        preparedStatement.execute();
+
+        try {
+            PreparedStatement preparedStatement = conn.prepareStatement(sql);
+            preparedStatement.execute();
+        } catch (SQLException e) {
+            conn.close();
+            throw new SQLException(e);
+        }
+
         conn.close();
     }
 
