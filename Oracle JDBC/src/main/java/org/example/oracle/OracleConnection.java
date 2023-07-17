@@ -21,7 +21,7 @@ public class OracleConnection {
         this.password = password;
 
         createOracleConnectionPool();
-        getOracleConnectionFromPool();
+        getOraclePooledConnection();
     }
 
     private void createOracleConnectionPool() throws SQLException {
@@ -31,7 +31,12 @@ public class OracleConnection {
         this.oracleConnPoolDataSource.setPassword(this.password);
     }
 
-    private void getOracleConnectionFromPool() throws SQLException {
+    private void getOraclePooledConnection() throws SQLException {
+        this.pooledConnection = this.oracleConnPoolDataSource.getPooledConnection();
+    }
+
+    public void renewOraclePooledConnection() throws SQLException {
+        this.pooledConnection.close();
         this.pooledConnection = this.oracleConnPoolDataSource.getPooledConnection();
     }
 
