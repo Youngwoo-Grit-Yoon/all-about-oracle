@@ -47,6 +47,12 @@ select *
 from t2
 where t2.server_id = (select t2.server_id from t2 where t2.rownum = 1);
 ```
+# 튜닝한 SQL 설명
+먼저 select 절에 `(ROW_NUMBER() OVER()) AS rownum`을 추가하였다. 그리고 order by 절에는 `t1.server_id asc`을
+추가하였다. 따라서 만약 server_id 컬럼 값으로 SC-CTI-01과 SC-CTI-02가 모두 존재한다면 오름차순을 통해서 rownum의 1번은
+SC-CTI-01을 가진 로우가 될 것이다. 그렇게 작성한 SQL을 WITH를 이용하여 t2라는 서브 쿼리로 생성하고, t2 서브 쿼리를 이용하여
+where 절에 `t2.server_id = (select t2.server_id from t2 where t2.rownum = 1)` 조건을 이용하면 한 개의 서버
+아이디에 대한 로우 데이터를 추출할 수 있다.
 # 튜닝 후 SQL 결과
 ```text
 985	SC-CTI-01	0000102238169639529302238	ServiceInitiated	1000				00001022381696395293	2238		2023-10-04 13:54:53.343	1
