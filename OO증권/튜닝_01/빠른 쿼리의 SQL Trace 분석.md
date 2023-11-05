@@ -634,9 +634,9 @@ SORT AGGREGATE --> 1행
             INDEX RANGE SCAN(IDX_DATE_CAL_DATE) --> 2행
             TABLE ACCESS BY USER ROWID(DATE_TIME) --> 2행
 ```
-불필요한 연산처럼 보이지만 일전에 삼성증권에 방문하였을 때 Dynamic SQL문으로 쓰이는 것을 보고 상기와 같은 쓰임새를 납득하였습니다.
+불필요한 연산처럼 보이지만 일전에 OO증권에 방문하였을 때 Dynamic SQL문으로 쓰이는 것을 보고 상기와 같은 쓰임새를 납득하였습니다.
 
-(2) 유일하게 부하 지점으로 보이는 부분은 MEDIATION_SEGMENT_FACT 테이블을 FULL SCAN 하는 부분입니다. 일전에 삼성증권에서 해당 쿼리가
+(2) 유일하게 부하 지점으로 보이는 부분은 MEDIATION_SEGMENT_FACT 테이블을 FULL SCAN 하는 부분입니다. 일전에 OO증권에서 해당 쿼리가
 1분 40초나 걸리게 했던 부분이 MS SQL 옵티마이저가 생성한 SQL Plan에서도 전체 쿼리 소요 시간 중 많은 부분을 차지하고 있었습니다! 느린 쿼리와의
 차이점은 하기에서 볼 수 있듯이 NESTED LOOP 조인이 아닌 HASH JOIN이라는 점입니다.
 ```text
